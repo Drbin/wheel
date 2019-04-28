@@ -1,2 +1,3 @@
-每天都更学一点东西 日积月累 先定个半年的目标。
-首先先学的是TypeScript的，学习的仅基础知识，只是给自己入门
+jqSpa通jquery实现 前端换页实现 替代传统的 iframe切换页面 支持刷新
+test 考试功能实现 自定义checkbox radio样式
+rem 移动端适配 1rem = 屏幕宽度/16
