@@ -1,0 +1,12 @@
+
+   body{ padding: 0 5%; box-sizing: border-box;}
+    .exam_title{ width: 100%; height: 30px; font-size: 12px; line-height: 30px; float: left; text-align: center;}
+    .time_txt{width: 120px; float: right; margin-right: 20px; line-height: 20px; height: 20px; margin-top: 5px; border-bottom: 1px solid #000; }
+    .exam_box{ width: 100%; float: left;}
+    .exam_box .exam_list{width: 100%; float: left;}
+    .exam_box .exam_list .exam_tit{line-height: 30px; float: left;width: 100%;}
+    .answer_list{width: 100%; float: left; margin-bottom: 5px;}
+    .answer_list li {line-height: 20px; float: left; width: 100%; margin: 3px 0;}
+    .point_block{ padding: 0 10px; background: #00be67; color: #fff; line-height: 20px; display: inline-block; margin: 2.5px 10px; border-radius: 3px;}
+    .btn_box{width: 100%; height: 50px; line-height: 50px; float: left; text-align: center;}
+    .btn_box a.btn{ width: 100%; height:26px;line-height: 26px; display: inline-block; border-radius: 4px; background: #00be67; color: #fff; }

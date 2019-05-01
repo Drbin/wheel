@@ -1,0 +1,9 @@
+.choose{ min-width: 200px; float: left;line-height: 24px; position: relative;box-sizing: border-box;padding-left:28px; }
+.choose input[type=checkbox],.choose input[type=radio]{position:absolute;top: 0; left: 0; z-index: 99; width:100%;cursor: pointer; height: 100%;margin:0;padding:0;opacity:0;filter:"alpha(opacity=0)"}
+.choose input[type=checkbox]+label{position:absolute;top: 0; left: 0; display:inline-block; width:200px;background:url(../img/checkbox.png) no-repeat 0 0;line-height:24px;height:24px;opacity:1}
+.choose input[type=checkbox]:hover+label{background:url(../img/checkbox.png) no-repeat 0 -51px}input[type=checkbox]:checked+label{background:url(../img/checkbox.png) no-repeat 0 -25px}
+.choose input[type=checkbox]:checked:hover+label{background:url(../img/checkbox.png) no-repeat 0 -81px}
+.choose input[type=radio]+label{display:inline-block;position:absolute;top: 0; left: 0;width:200px;background:url(../img/radio.png) no-repeat 0 -2px;line-height:24px;height:24px;}
+.choose input[type=radio]:hover+label{background:url(../img/radio.png) no-repeat 0 -26px}
+.choose input[type=radio]:checked+label{background:url(../img/radio.png) no-repeat 0 -50px}
+.choose input[type=radio]:checked:hover+label{background:url(../img/radio.png) no-repeat 0 -78px}
