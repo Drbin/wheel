@@ -1,0 +1,9 @@
+*{margin: 0;padding: 0;}
+html,body{ width:100%; min-height: 100%; overflow-x:hidden; overflow-y: hidden; }
+body{position: relative;padding-bottom: 2rem;}
+header{ height: 2rem; width: 100%;  float: left; background:#fd631b; font-size: 1.25rem; line-height: 2rem; text-align: center; color: #fff;}
+button{ width: 8rem; height: 1.5rem; background:#fd631b;color: #fff; margin: 1rem 4rem; border-radius:0.75rem; font-size: 0.75rem;border: none; outline: none; }
+main{ width: 12rem;margin: 2rem; height: 8rem; box-shadow: 0 0 0.3rem #ccc; font-size: 0.8rem;}
+footer{ height: 2rem; position:fixed; left: 0; bottom: 0; width: 100%;  float: left; background:#fd631b; font-size: 1.25rem; line-height: 2rem; text-align: center; color: #fff;}
+
+
