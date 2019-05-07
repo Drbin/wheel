@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户导入</title>
+
+    <style>
+        html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+        body{line-height:1;font-size: 16px; color: #666; background:#fff; font-family: "microsoft yahei"; }
+        body,html{ height: 100%; width: 100%; overflow: hidden;}
+        article,aside,details,figcaption,figure,footer,header,menu,nav,section{display:block}
+        nav ul{list-style:none}
+        blockquote,q{quotes:none}
+        blockquote:before,blockquote:after,q:before,q:after{content:none}
+        a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent;text-decoration:none}
+        mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}
+        del{text-decoration:line-through}
+        abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}
+        table{border-collapse:collapse;border-spacing:0}
+        hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
+        input,select{vertical-align:middle}
+        li{list-style:none}
+        img{border:none;}
+        table{width: 100%;border-collapse:collapse;border-spacing:0}
+        table thead th{ height: 38px; line-height: 34px; border: 1px solid #eee; text-align: center ;}
+        table tbody td{ height: 32px; line-height: 32px; border: 1px solid #eee; text-align: center;}
+        .warp{ width: 100%; height: 100%; float: left; position: relative;}
+        .fileBox{ width: 100%; height: 30px; line-height: 30px; margin: 10px 0; float: left;}
+        .fileBox label{width: 140px; text-align: right; height: 30px; display: inline-block; float: left;}
+        .fileAdd{ width: 300px;height: 30px; float: left;}
+        .file_ex{ width: 500px;  margin-top: 10px; line-height: 30px; box-sizing: border-box; padding-left: 90px;}
+        .btn{ width: 70px; height: 30px;position: relative;cursor: pointer; overflow: hidden; display: inline-block; color: #fff; background-color: #00be67; border-radius: 4px; line-height: 30px; text-align: center; }
+        .btn #file{ opacity: 0;width: 300px; height: 300px; position: absolute; z-index: 999;  left: -130px; top:-120px; cursor: pointer;}
+        .btn_sure{ width: 70px; height: 30px;position: absolute; right: 50px; bottom: 20px; cursor: pointer; overflow: hidden; display: inline-block; color: #fff; background-color: #1a67bd; border-radius: 4px; line-height: 30px; text-align: center; }
+    </style>
+
+</head>
+<body>
+<div class="warp">
+    <form id="formData">
+        <div class="fileBox">
+            <label>选择文件：</label>
+            <div class="fileAdd">
+                <a href="javascript:;" class="btn">
+                    浏览
+                    <input type="file" id="file" name="file"  />
+                </a>
+            </div>
+        </div>
+        <div class="file_ex" id="fileEX">
+
+        </div>
+
+    </form>
+  
+</div>
+<script>
+    function suffix(str){
+        var suffix=str.substring(str.lastIndexOf(".")+1,str.length);
+        return suffix.toLowerCase();
+    }
+    window.onload=function(){
+        let file = document.getElementById("file")
+        let fileBox=document.getElementById("fileEX")
+        file.onchange=function(){
+            let filename=this.files[0];   
+            fileBox.innerHTML="　 "+filename.name +"<a href='javascript:;' onclick='run()' style='color: red; float: right'>删除</a>"
+        }
+    }
+    function run() {
+        fileBox.innerHTML="";
+    }
+</script>
+ 
+</body>
+</html>
