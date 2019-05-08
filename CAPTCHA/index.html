@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas验证码</title>
+    <style>
+        body{text-align: center}
+        canvas{border:1px solid greenyellow}
+    </style>
+</head>
+<body>
+       
+        <canvas width="120" height="30" id="c1">
+        </canvas>
+        <script>
+            run()
+            document.getElementById("c1").onclick=function(){
+                run()
+            }
+            function run(){
+                 function rn(min,max){
+                    return  parseInt(Math.random()*(max-min)+min);
+                }
+           
+                function rc(min,max){
+                    var r=rn(min,max);
+                    var g=rn(min,max);
+                    var b=rn(min,max);
+                    return `rgb(${r},${g},${b})`;
+                }
+               
+                var w=120;
+                var h=40;
+                var ctx=c1.getContext("2d");
+                ctx.fillStyle=rc(180,230);
+                ctx.fillRect(0,0,w,h);
+             
+                var pool="ABCDEFGHIJKLIMNOPQRSTUVWSYZ1234567890";
+                for(var i=0;i<4;i++){
+                    var c=pool[rn(0,pool.length)];//随机的字
+                    var fs=rn(18,40);//字体的大小
+                    var deg=rn(-30,30);//字体的旋转角度
+                    ctx.font=fs+'px Simhei';
+                    ctx.textBaseline="top";
+                    ctx.fillStyle=rc(80,150);
+                    ctx.save();
+                    ctx.translate(30*i+15,15);
+                    ctx.rotate(deg*Math.PI/180);
+                    ctx.fillText(c,-15+5,-15);
+                    ctx.restore();
+                }
+               
+                for(var i=0;i<5;i++){
+                    ctx.beginPath();
+                    ctx.moveTo(rn(0,w),rn(0,h));
+                    ctx.lineTo(rn(0,w),rn(0,h));
+                    ctx.strokeStyle=rc(180,230);
+                    ctx.closePath();
+                    ctx.stroke();
+                }
+              
+                for(var i=0;i<40;i++){
+                    ctx.beginPath();
+                    ctx.arc(rn(0,w),rn(0,h),1,0,2*Math.PI);
+                    ctx.closePath();
+                    ctx.fillStyle=rc(150,200);
+                    ctx.fill();
+                }
+            }
+            
+           
+        </script>
+</body>
+</html>
