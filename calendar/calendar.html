@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+    	*{margin: 0; padding: 0;}
+    	#id{ width: 80px; background: #ccc; cursor: pointer; height: 30px; border-radius: 5px;  text-align: center; line-height: 30px;}
+    	li {list-style: none;}
+    	html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+body{line-height:1;font-size: 16px; color: #666; background:#fff; font-family: "microsoft yahei"; }
+body,html{ height: 100%; width: 100%; min-width: 1200px; overflow: hidden;}
+article,aside,details,figcaption,figure,footer,header,menu,nav,section{display:block}
+nav ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:none}
+a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent;text-decoration:none}
+mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}
+del{text-decoration:line-through}
+abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}
+table{border-collapse:collapse;border-spacing:0}
+hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
+input,select{vertical-align:middle}
+li{list-style:none}
+img{border:none;}
+table{width: 100%;border-collapse:collapse;border-spacing:0}
+table thead th{ height: 38px; line-height: 34px; border: 1px solid #eee; text-align: center ;}
+table tbody td{ height: 32px; line-height: 32px; border: 1px solid #eee; text-align: center;}
+
+.calendar{ width: 100%;float: left; min-width:1050px; overflow-x: auto;overflow-y: hidden}
+.date_tit{text-align: center; height: 40px; line-height: 40px; width: 100%; float: left; position: relative; }
+.date_tit button{ width: 24px; height: 24px; outline: none; border-radius: 3px; cursor: pointer; z-index:99; line-height: 20px;border:none;text-align: center; position: absolute; top:8px; background-color: orangered;}
+.date_tit button img{display: inline-block; margin-top: 4px;}
+.date_tit #left_btn{ left: 50px; }
+.date_tit #right_btn{ right: 50px; }
+.date_tit h4{ display: inline-block;}
+.calendar .c_week{ width: 100%; height:30px; line-height: 30px; float: left;}
+.calendar .c_week li{ width: 14%;min-width: 150px; text-align: center; box-sizing: border-box; height:30px; border: 1px solid #ddd; line-height: 30px; float: left;}
+.calendar .c_date{ width: 100%; float: left;}
+.calendar .c_date li{ width: 14%; height:102px; border: 1px solid #ddd; line-height: 16px; font-size: 12px; box-sizing: border-box; float: left; background-color: #eee;}
+.calendar .c_date li .date_msg{ width:40px; background-color: #ddd; margin-right:6px;  font-size: 18px; font-weight: 400;  text-align: center; height:32px; line-height: 32px;  float: left;}
+.calendar .c_date li span{  color: #3385ff; margin: 0 2px; }
+.calendar .c_date li span.h_reg{ color:#00F7DE !important; }
+.calendar .c_date li span.dark{ color: orangered !important;}
+.calendar .c_date li span.f_drk{ color: mediumpurple !important;}
+.calendar .c_date .data_list{cursor: pointer;background-color: #fff;}
+
+
+    </style>
+
+</head>
+<body>
+
+<div class="warp">
+    <div class="calendar" id="calendar">
+        <div class="date_tit">
+            <button id="left_btn"><img src="left.png" /></button>
+            <button id="right_btn"><img src="right.png" /></button>
+            <h4 id="claTit"></h4>
+        </div>
+        <ul class="c_week">
+            <li>日</li>
+            <li>一</li>
+            <li>二</li>
+            <li>三</li>
+            <li>四</li>
+            <li>五</li>
+            <li>六</li>
+        </ul>
+        <ul class="c_date">
+
+
+        </ul>
+    </div>
+</div>
+<input type="hidden" id="data">
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="layer.js"></script>
+<script>
+
+
+    var num =0;
+    
+    $("#right_btn").click(function () {
+        num++;
+       
+      
+        QkCalendar(num,0);
+    });
+    $("#left_btn").click(function () {
+      
+        num--;
+        QkCalendar(num,0);
+    })
+    QkCalendar(0);
+
+    function QkCalendar(n){
+        $(".c_date").empty();
+        var str="";
+        var oDate= new Date();
+        var iYear=oDate.getFullYear();
+        var iMonth=oDate.getMonth();
+        var today=oDate.getDate();
+        oDate.setMonth(oDate.getMonth()+n,1);
+        var year=oDate.getFullYear();
+        var month=oDate.getMonth();
+        var whatWeek=oDate.getDay();
+        oDate.setMonth(month,0);
+        var nextDate=oDate.getDate();
+        oDate.setMonth(month+1,0);
+        var allDate=oDate.getDate();
+        var dayStr="";
+        var str="";
+        $(".date_tit h4").html(year+"年"+(month+1)+"月").attr({"data-year":year,"data-month":month+1});
+        let monDate= month+1;
+        monDate=monDate>9?monDate:"0"+monDate;
+        let dates= year+"-"+monDate;
+        let arr= [];
+        $.ajax({
+            url:'',
+            type:'post',
+            dataType:"json",
+            data:{date:dates},
+            async:false,
+            success:function (result) {
+                console.log(result)
+                arr=result.data;
+
+            },
+            error:function (err) {
+                console.log(err)
+
+            }
+        })
+
+        for(var i=whatWeek-1;i>=0;i--){
+            dayStr+="<li style='color:#aaa;'>"+(nextDate-i)+"</li>"
+        }
+        let years=$("#claTit").attr("data-year");
+        let months=$("#claTit").attr("data-month");
+        for(var k=1;k<allDate+1;k++){
+            var style="";
+            let s= k;
+            s= s>9?s:"0"+s;
+            let da=dates+"-"+s;
+            var dr=""
+
+            if(arr.length>0){
+
+                for (var z=0;z<arr.length;z++){
+                    if(da==arr[z].checkDate){
+                        if (arr[z].type==2){
+                            dr+="<span class='h_reg'>"+arr[z].userName+"</span>、"
+                        }else if (arr[z].type==3){
+                            dr+="<span class='dark'>"+arr[z].userName+"</span>、"
+                        }else if (arr[z].type==4){
+                            dr+="<span class='f_drk'>"+arr[z].userName+"</span>、"
+                        }else {
+                            dr+="<span class=''>"+arr[z].userName+"</span>、"
+                        }
+                    }
+                }
+            }
+
+
+            var className="data_list";
+
+            if((k<today&&iYear==years&&iMonth+1==months)||iYear>years||(iMonth>months&&iYear==years)){
+                className=""
+            }
+            if(k==today&&iYear==years&&iMonth+1==months){
+                style="background:orangered;color:#fff;"
+            }
+            dayStr+="<li class='"+className+"'>" +
+                "<div class='date_msg' style='"+style+"' >"+k+"</div> " +dr+
+                "</li>"
+        }
+        var num=42-(whatWeek+allDate);
+        for(var j=0;j<num;j++){
+            dayStr+="<li style='color:#aaa;'>"+(j+1)+"</li>"
+        }
+        $(".c_date").append(dayStr);
+
+    }
+    let nums=0;
+   
+
+
+
+</script>
+</body>
+</html>
